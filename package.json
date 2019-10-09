@@ -1,0 +1,17 @@
+{
+	"scripts": {
+		"lint": "eslint \"./**/*.js\""
+	},
+	"devDependencies": {
+		"eslint": "^6.5.1",
+		"eslint-config-haykam": "^1.8.0",
+		"eslint-plugin-extra-rules": "0.0.0-development",
+		"eslint-plugin-html": "^6.0.0",
+		"eslint-plugin-json": "^1.4.0",
+		"eslint-plugin-markdown": "^1.0.0",
+		"eslint-plugin-unicorn": "^10.0.0"
+	},
+	"eslintConfig": {
+		"extends": "eslint-config-haykam"
+	}
+}
