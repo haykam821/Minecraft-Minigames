@@ -1,2 +1,2 @@
 # Minecraft-Minigames
- A minigame server software for Minecraft 1.14.4.
+ A minigame server software for Minecraft Classic (and ClassiCube).
