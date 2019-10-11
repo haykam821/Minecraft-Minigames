@@ -76,6 +76,7 @@ class Player {
 			if (message.startsWith("/")) {
 				return parser.parse(message.slice(1), {
 					...this,
+					map: this.server.world.blocks,
 					sendOutput: this.sendOutput.bind(this),
 				});
 			}
