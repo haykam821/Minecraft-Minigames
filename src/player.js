@@ -1,4 +1,5 @@
 const log = require("./debug.js");
+const parser = require("./parser.js");
 
 class Player {
 	constructor(client, server) {
@@ -50,6 +51,18 @@ class Player {
 		});
 	}
 
+	sendMessage(message) {
+		return this.write("message", {
+			message,
+			player_id: this.id,
+		});
+	}
+
+	sendOutput(message, name) {
+		name = name[0].toUpperCase() + name.slice(1);
+		return this.sendMessage(`&9${name}: &7${message}`);
+	}
+
 	login() {
 		this.server.world.sendWorld(this);
 		this.spawn();
@@ -60,6 +73,13 @@ class Player {
 		});
 
 		this.client.on("message", ({ message }) => {
+			if (message.startsWith("/")) {
+				return parser.parse(message.slice(1), {
+					...this,
+					sendOutput: this.sendOutput.bind(this),
+				});
+			}
+
 			this.server.broadcast("message", {
 				message: `&e${this.client.username}: &7${message}`,
 				player_id: this.id,
